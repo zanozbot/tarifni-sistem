@@ -53,15 +53,15 @@ export function App() {
   }, []);
 
   return (
-    <div className="h-dvh flex flex-col">
-      <div className="p-6 space-y-2 relative">
-        <a
-          className="absolute top-3 right-3 z-10"
-          href="https://github.com/zanozbot/tarifni-sistem"
-          target="_blank"
-        >
-          <Icons.github className="w-6 h-6 text-zinc-700 hover:text-red-700 transition-colors" />
-        </a>
+    <div className="h-dvh flex flex-col relative">
+      <a
+        className="absolute top-3 right-3 z-10"
+        href="https://github.com/zanozbot/tarifni-sistem"
+        target="_blank"
+      >
+        <Icons.github className="w-6 h-6 text-zinc-700 hover:text-red-700 transition-colors" />
+      </a>
+      <div className="p-6 space-y-2  max-w-screen-lg self-center">
         <h1 className="text-3xl font-bold uppercase">
           Vizualizacija novega tarifnega sistema
         </h1>
@@ -92,7 +92,7 @@ export function App() {
         <div className="space-y-2">
           <h2 className="text-lg flex flex-col sm:flex-row sm:gap-2 sm:items-center font-bold uppercase">
             <span>Legenda časovnih blokov</span>
-            <span className="text-xs font-normal normal-case">
+            <span className="text-sm font-normal normal-case">
               (od najcenejšega do najdražjega)
             </span>
           </h2>
@@ -114,7 +114,7 @@ export function App() {
       ></div>
       <div className="mt-2 text-center">
         <button
-          className="border border-zinc-200 hover:bg-zinc-200 transition-colors text-sm px-2 py-1 rounded-md"
+          className="border border-zinc-200 hover:bg-zinc-200 transition-colors px-2 py-1 rounded-md"
           onClick={moveToCurrentTime}
         >
           Premik na trenutni čas
