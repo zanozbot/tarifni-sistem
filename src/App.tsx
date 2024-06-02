@@ -8,6 +8,7 @@ import {
 } from "./utils/time-blocks";
 import { Cookies } from "./components/cookies";
 import { PRICES } from "./utils/prices";
+import { Icons } from "./components/icons";
 
 export function App() {
   const visualizationRef = useRef<HTMLDivElement>(null);
@@ -53,7 +54,14 @@ export function App() {
 
   return (
     <div className="h-dvh flex flex-col">
-      <div className="p-6 space-y-2">
+      <div className="p-6 space-y-2 relative">
+        <a
+          className="absolute top-3 right-3 z-10"
+          href="https://github.com/zanozbot/tarifni-sistem"
+          target="_blank"
+        >
+          <Icons.github className="w-6 h-6 text-zinc-700 hover:text-red-700 transition-colors" />
+        </a>
         <h1 className="text-3xl font-bold uppercase">
           Vizualizacija novega tarifnega sistema
         </h1>
@@ -113,13 +121,6 @@ export function App() {
         </button>
       </div>
       <div className="p-4 flex gap-4 justify-center">
-        <a
-          className="hover:text-red-700 text-zinc-700 transition-colors underline text-sm"
-          href="https://github.com/zanozbot/tarifni-sistem"
-          target="_blank"
-        >
-          GitHub
-        </a>
         <a
           className="hover:text-red-700 text-zinc-700 transition-colors underline text-sm"
           href="https://ozbot.si/privacy-policy"
