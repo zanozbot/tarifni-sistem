@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --price1: #540202;
+  --price2: #ab3131;
+  --price3: #ede0a6;
+  --price4: #799163;
+  --price5: #507b58;
+}
+
+html,
+body,
+#root {
+  @apply min-h-dvh;
+}
+
+.vis-content,
+.vis-itemset,
+.vis-foreground,
+.vis-group,
+.vis-item {
+  @apply h-full;
+}
+
+.vis-item-overflow {
+  @apply flex items-center justify-center;
+}
+
+.vis-panel,
+.vis-item,
+.vis-timeline {
+  @apply border-none !important;
+}
+
+.vis-item {
+  @apply border-r-2 border-r-zinc-950/20 !important;
+}
+
+.vis-vertical.vis-major {
+  @apply border-l-2 border-l-zinc-950/10 !important;
+}
+
+.vis-text {
+  @apply text-zinc-950 !important;
+}
+
+.vis-current-time {
+  @apply bg-zinc-950/50 !important;
+}
+
+.vis-text {
+  @apply text-lg uppercase !important;
+}
+
+.vis-item-content {
+  @apply flex flex-col items-center justify-center !important;
+}
+
+.vis-item-content > span:first-child {
+  @apply text-xl uppercase;
+}
+
+.vis-item-content > span:not(:first-child) {
+  @apply text-sm;
+}
+
+.vis-item-content > span:last-child {
+  @apply -mt-1;
+}
+
+.block-1 {
+  background-color: var(--price1) !important;
+}
+
+.block-2 {
+  @apply text-zinc-50 !important;
+  background-color: var(--price2) !important;
+}
+
+.block-4 {
+  @apply text-zinc-50 !important;
+  background-color: var(--price4) !important;
+}
+
+.block-5 {
+  @apply text-zinc-50 !important;
+  background-color: var(--price5) !important;
+}
+
+.block-3 {
+  @apply text-zinc-50 !important;
+  background-color: var(--price5) !important;
+}
+
+@media screen and (min-width: 768px) {
+  .vis-text {
+    @apply pl-1.5 !important;
+  }
+}
