@@ -9,6 +9,7 @@ import {
 import { Cookies } from "./components/cookies";
 import { PRICES } from "./utils/prices";
 import { Icons } from "./components/icons";
+import { version } from "../package.json";
 
 export function App() {
   const visualizationRef = useRef<HTMLDivElement>(null);
@@ -40,7 +41,7 @@ export function App() {
     const correctTimeblockAndSeason = () => {
       const date = new Date();
       const timeblock = getCurrentTimeBlock(date);
-      setCurrentTimeBlock(timeblock?.block);
+      setCurrentTimeBlock(timeblock?.id);
       setSeason(isHighSeason(now) ? "visoki" : "nizki");
     };
     correctTimeblockAndSeason();
@@ -97,7 +98,7 @@ export function App() {
             </span>
           </h2>
           <div className="flex gap-4 flex-wrap">
-            {PRICES.sort((a, b) => a.price - b.price).map((price) => (
+            {PRICES.sort((a, b) => a.energy - b.energy).map((price) => (
               <div key={price.block} className="flex items-center gap-2">
                 <div
                   className={`block-${price.block} w-4 h-4 rounded-sm`}
@@ -120,22 +121,25 @@ export function App() {
           Premik na trenutni čas
         </button>
       </div>
-      <div className="p-4 flex gap-4 justify-center">
-        <a
-          className="hover:text-red-700 text-zinc-700 transition-colors underline text-sm"
-          href="https://ozbot.si/privacy-policy"
-          target="_blank"
-        >
-          Politika zasebnosti
-        </a>
-        <a
-          className="hover:text-red-700 text-zinc-700 transition-colors underline text-sm"
-          href="https://ozbot.si/contact"
-          target="_blank"
-        >
-          Kontakt
-        </a>
-      </div>
+      <footer className="p-4 space-y-1">
+        <div className="flex gap-4 justify-center">
+          <a
+            className="hover:text-red-700 text-zinc-700 transition-colors underline text-sm"
+            href="https://ozbot.si/privacy-policy"
+            target="_blank"
+          >
+            Politika zasebnosti
+          </a>
+          <a
+            className="hover:text-red-700 text-zinc-700 transition-colors underline text-sm"
+            href="https://ozbot.si/contact"
+            target="_blank"
+          >
+            Kontakt
+          </a>
+        </div>
+        <div className="text-center text-sm opacity-50">v{version}</div>
+      </footer>
       <Cookies />
     </div>
   );

@@ -24,52 +24,52 @@ const LOW_SEASON = {
  * Time blocks for high season on workdays.
  */
 const TIME_BLOCKS_HIGH_SEASON_WORKDAYS = [
-  { block: 1, start: 7, end: 14 },
-  { block: 1, start: 16, end: 20 },
-  { block: 2, start: 6, end: 7 },
-  { block: 2, start: 14, end: 16 },
-  { block: 2, start: 20, end: 22 },
-  { block: 3, start: 0, end: 6 },
-  { block: 3, start: 22, end: 0, day: 1 },
+  { id: 1, start: 7, end: 14 },
+  { id: 1, start: 16, end: 20 },
+  { id: 2, start: 6, end: 7 },
+  { id: 2, start: 14, end: 16 },
+  { id: 2, start: 20, end: 22 },
+  { id: 3, start: 0, end: 6 },
+  { id: 3, start: 22, end: 0, day: 1 },
 ];
 
 /**
  * Time blocks for high season on weekends and holydays.
  */
 const TIME_BLOCKS_HIGH_SEASON_WEEKENDS_AND_HOLYDAYS = [
-  { block: 2, start: 7, end: 14 },
-  { block: 2, start: 16, end: 20 },
-  { block: 3, start: 6, end: 7 },
-  { block: 3, start: 14, end: 16 },
-  { block: 3, start: 20, end: 22 },
-  { block: 4, start: 0, end: 6 },
-  { block: 4, start: 22, end: 0, day: 1 },
+  { id: 2, start: 7, end: 14 },
+  { id: 2, start: 16, end: 20 },
+  { id: 3, start: 6, end: 7 },
+  { id: 3, start: 14, end: 16 },
+  { id: 3, start: 20, end: 22 },
+  { id: 4, start: 0, end: 6 },
+  { id: 4, start: 22, end: 0, day: 1 },
 ];
 
 /**
  * Time blocks for low season on workdays.
  */
 const TIME_BLOCKS_LOW_SEASON_WORKDAYS = [
-  { block: 2, start: 7, end: 14 },
-  { block: 2, start: 16, end: 20 },
-  { block: 3, start: 6, end: 7 },
-  { block: 3, start: 14, end: 16 },
-  { block: 3, start: 20, end: 22 },
-  { block: 4, start: 0, end: 6 },
-  { block: 4, start: 22, end: 0, day: 1 },
+  { id: 2, start: 7, end: 14 },
+  { id: 2, start: 16, end: 20 },
+  { id: 3, start: 6, end: 7 },
+  { id: 3, start: 14, end: 16 },
+  { id: 3, start: 20, end: 22 },
+  { id: 4, start: 0, end: 6 },
+  { id: 4, start: 22, end: 0, day: 1 },
 ];
 
 /**
  * Time blocks for low season on weekends and holydays.
  */
 const TIME_BLOCKS_LOW_SEASON_WEEKENDS_AND_HOLYDAYS = [
-  { block: 3, start: 7, end: 14 },
-  { block: 3, start: 16, end: 20 },
-  { block: 4, start: 6, end: 7 },
-  { block: 4, start: 14, end: 16 },
-  { block: 4, start: 20, end: 22 },
-  { block: 5, start: 0, end: 6 },
-  { block: 5, start: 22, end: 0, day: 1 },
+  { id: 3, start: 7, end: 14 },
+  { id: 3, start: 16, end: 20 },
+  { id: 4, start: 6, end: 7 },
+  { id: 4, start: 14, end: 16 },
+  { id: 4, start: 20, end: 22 },
+  { id: 5, start: 0, end: 6 },
+  { id: 5, start: 22, end: 0, day: 1 },
 ];
 
 /**
@@ -159,6 +159,7 @@ export const generateItems = (): DataItem[] => {
     date.setDate(date.getDate() + i);
 
     generateTimeBlocks(date).forEach((block) => {
+      const price = getBlockPrice(block.id);
       const item: DataItem = {
         start: new Date(
           date.getFullYear(),
@@ -172,10 +173,8 @@ export const generateItems = (): DataItem[] => {
           date.getDate() + (block.day || 0),
           block.end,
         ),
-        content: `<span>Blok ${block.block}</span><span>${getBlockPrice(
-          block.block,
-        )}</span><span>EUR / kWh</span>`,
-        className: `block-${block.block}`,
+        content: `<span>Blok ${block.id}</span><span>${price?.energy}</span><span>EUR/kWh</span><span>${price?.power}</span><span>EUR/kW</span>`,
+        className: `block-${block.id}`,
       };
 
       items.push(item);

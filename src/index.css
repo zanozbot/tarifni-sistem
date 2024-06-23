@@ -63,11 +63,11 @@ body,
 }
 
 .vis-item-content > span:not(:first-child) {
-  @apply text-sm;
+  @apply text-base;
 }
 
-.vis-item-content > span:last-child {
-  @apply -mt-1;
+.vis-item-content > span:nth-child(odd):not(:first-child) {
+  @apply -mt-1.5 text-sm opacity-80;
 }
 
 .block-1 {
