@@ -1,6 +1,7 @@
 import { TimelineOptions } from "vis-timeline";
-import { isMobile } from "./size";
+import { isMobile, isTablet } from "./size";
 
+const zoomMinMultiplier = isMobile ? 4 : isTablet ? 6 : 10;
 /**
  * Current time.
  */
@@ -12,7 +13,7 @@ export const start = new Date(now.valueOf() - 1000 * 60 * 60 * 1); // 1 hour ago
 /**
  * End date for the visible timeline.
  */
-const end = new Date(now.valueOf() + 1000 * 60 * 60 * (isMobile ? 4 : 10)); // 12h hours from now
+const end = new Date(now.valueOf() + 1000 * 60 * 60 * zoomMinMultiplier);
 /**
  * Minimum date for the timeline.
  */
@@ -31,7 +32,7 @@ export const options: TimelineOptions = {
   verticalScroll: false,
   zoomable: true,
   zoomMax: 1000 * 60 * 60 * 24 * 7, // 7 days
-  zoomMin: 1000 * 60 * 60 * (isMobile ? 4 : 10),
+  zoomMin: 1000 * 60 * 60 * zoomMinMultiplier,
   zoomKey: "ctrlKey",
   itemsAlwaysDraggable: false,
   height: "100%",
